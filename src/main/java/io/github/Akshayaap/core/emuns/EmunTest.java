@@ -1,4 +1,10 @@
+/**
+ *
+ *
+ * @Author Akshay
+ */
 package io.github.Akshayaap.core.emuns;
+
 
 public class EmunTest {
     public static void main(String[] args) {
@@ -15,5 +21,6 @@ public class EmunTest {
         for (Day day:Day.values()){
             System.out.println(day);
         }
+
     }
 }

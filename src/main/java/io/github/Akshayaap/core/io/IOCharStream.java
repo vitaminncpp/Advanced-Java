@@ -1,44 +1,47 @@
 package io.github.Akshayaap.core.io;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.FileWriter;
+import java.io.FileReader;
 import java.util.Random;
+import java.io.IOException;
 
 public class IOCharStream {
 
-    private FileInputStream input;
-    private FileOutputStream output;
+    private FileReader reader;
+    private FileWriter writer;
+    private String fName;
 
-    public IOCharStream(String fName) throws FileNotFoundException {
-        input=new FileInputStream(fName);
-        output=new FileOutputStream(fName);
+    public IOCharStream(String fName) {
+        this.fName=fName;
     }
 
 
     public void writeToFile() throws IOException {
+        writer=new FileWriter(fName);
         int i=0;
         int ch=0;
         Random r=new Random();
         while (i<1000000){
             ch=r.nextInt();
-            output.write((byte)ch);
+            writer.write(ch);
             i++;
         }
+        writer.close();
     }
 
     protected void finilize() throws IOException {
-        input.close();
-        output.close();
+        reader.close();
+        writer.close();
     }
 
     public void readFromFile() throws IOException {
+        reader=new FileReader(fName);
         int ch=0;
 
-        while((ch=input.read())!=-1){
+        while((ch=reader.read())!=-1){
             System.out.print((char)ch);
         }
+        reader.close();
     }
 
 }

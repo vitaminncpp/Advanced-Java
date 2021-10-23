@@ -8,16 +8,30 @@ public class SyncTestObj {
         this.data=data;
     }
 
-    public synchronized void print5(int a) {
+    public  void print5(int a) {
 
-        for(int i=0;i<5;i++){
-            data=a+i;
-            System.out.println(data);
+        //Achieving Synchronization with synchronized block
+        for (int i=0;i<6;i++){
+            System.out.println(-(i+a));
             try {
-                Thread.sleep(400);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+
+        synchronized (this)
+        {
+            for(int i=0;i<5;i++){
+                data=a+i;
+                System.out.println(data);
+                try {
+                    Thread.sleep(400);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
 }

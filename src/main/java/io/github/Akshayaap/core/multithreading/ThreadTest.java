@@ -7,5 +7,7 @@ public class ThreadTest {
 
         new Thread(new Thread2(obj)).start();
         thread1.start();
+
+
     }
 }

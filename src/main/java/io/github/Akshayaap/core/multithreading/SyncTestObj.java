@@ -12,9 +12,9 @@ public class SyncTestObj {
 
         //Achieving Synchronization with synchronized block
         for (int i=0;i<6;i++){
-            System.out.println(-(i+a));
+            System.out.println(-(i+a)+"\t\t"+data);
             try {
-                Thread.sleep(200);
+                Thread.sleep(400);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -24,12 +24,20 @@ public class SyncTestObj {
         {
             for(int i=0;i<5;i++){
                 data=a+i;
-                System.out.println(data);
+                System.out.println(data+"\t\t"+data);
                 try {
                     Thread.sleep(400);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+            }
+        }
+        for (int i=0;i<6;i++){
+            System.out.println(i-a+1000000+"\t\t"+data);
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 

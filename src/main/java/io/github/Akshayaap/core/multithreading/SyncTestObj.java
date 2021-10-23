@@ -8,7 +8,7 @@ public class SyncTestObj {
         this.data=data;
     }
 
-    public void print5(int a) {
+    public synchronized void print5(int a) {
 
         for(int i=0;i<5;i++){
             data=a+i;

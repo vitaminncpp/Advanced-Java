@@ -69,4 +69,24 @@ public class UserCredManager {
         return APIKey;
     }
 
+    public static String getUrl(String service) throws IOException, SAXException, ServiceNotFoundException {
+        Document document=XMLParser.parseXML("usercredentials.xml");
+        NodeList list=document.getElementsByTagName("url");
+        Element element=null;
+        String attrib=null;
+        String URL=null;
+        for (int i=0; i<list.getLength();i++) {
+            element=(Element) list.item(i);
+            attrib=element.getAttribute("name");
+            if(attrib.equals(service)){
+                URL=element.getAttribute("value");;
+                break;
+            }
+        }
+        if(URL==null){
+            throw new ServiceNotFoundException("API Key for given Service is not Found in config file");
+        }
+        return URL;
+    }
+
 }
